@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
+            $table->integer('views');
+            $table->integer('likes');
+            $table->integer('dislikes');
+            $table->string('title');
+            $table->string('text');
             $table->timestamps();
         });
     }
@@ -24,4 +29,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('blogs');
     }
+
+
 };

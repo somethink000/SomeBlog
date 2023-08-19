@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\BlogStoreRequest;
+use App\Http\Requests\BlogUpdateRequest;
 use App\Models\Blog;
-use App\Services\v1\BlogService;
+use App\Http\Services\v1\BlogService;
 use Illuminate\Http\Request;
 
 
@@ -14,41 +17,26 @@ class BlogController extends Controller
     {
     }
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return Blog::get();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(BlogStoreRequest $request): Blog
     {
-        //
+        return $this->blogService->create($request);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Blog $blog)
     {
         return $blog;
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Blog $blog)
+    public function update(BlogUpdateRequest $request, Blog $blog): Blog
     {
-        //
+        return $this->blogService->update($request, $blog);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Blog $blog)
     {
         //
