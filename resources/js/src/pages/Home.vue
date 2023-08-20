@@ -1,45 +1,56 @@
 <template>
-    <h1>Blogs:</h1>
+	<h1>ввыаа</h1>
     <div>
         <spin v-if="loading"></spin>
-        <div v-else>
-            <Blog v-for="blog in blogs" :title="blog.title" />
-
+        <div style="display:flex; flex-wrap: wrap;" v-else>
+            <post
+                v-for="post in posts"
+            />
         </div>
     </div>
 </template>
 
 <script >
-import { defineComponent } from 'vue';
-import Spin from "../components/Spin.vue";
-import axios from 'axios';
-import Blog from "../components/Blog.vue";
-export default defineComponent({
-    components: {
-        Spin,
-        Blog
-    },
-    data: () => ({
-        loading: true,
-        blogs: []
-    }),
-    mounted() {
-        this.loadPosts();
-    },
-    methods: {
-        loadPosts() {
-            axios.get('api/blog')
+	import { defineComponent } from 'vue';
+ 	import Spin from "../components/Spin.vue";
+    import axios from 'axios';
+    import Post from "../components/Objection.vue";
+    export default defineComponent({
+        components: {
+            Spin,
+            Post
+        },
+        data: () => ({
+            loading: true,
+            posts: []
+        }),
+        mounted() {
+            this.loadPosts();
+        },
+        methods: {
+            loadPosts() {
+                axios.get('api/v1/blog')
                 .then(res => {
-                    console.log(res.data);
-                    this.blogs = res.data;
+					console.log(res.data);
+                    this.posts = res.data;
                     setTimeout(() => {
                         this.loading = false;
                     }, 500)
                 })
+            }
         }
-    }
-});
+	});
 </script>
 
 
-<style></style>
+<style scoped>
+    .uk-card {
+        width: 40%;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+    .uk-card:last-child {
+        margin-right: 0;
+    }
+</style>

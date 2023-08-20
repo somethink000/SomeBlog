@@ -9,13 +9,20 @@
 					>Главная
 				</router-link>
 			</li>
-			<!-- <li class="nav-item">
+			<li class="nav-item">
+				<router-link
+					class="nav-link"
+					to="/some-page"
+					>Какая-то страница
+				</router-link>
+			</li>
+			<li class="nav-item">
 				<router-link
 					class="nav-link"
 					to="/about"
 					>О нас
 				</router-link>
-			</li> -->
+			</li>
 		</ul>
 	</header>
 </template>
