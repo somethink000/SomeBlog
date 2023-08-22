@@ -1,14 +1,14 @@
 <template>
 	<header class="header">
 		<ul class="header__menu nav nav-pills">
-			<li class="nav-item">
+			<!-- <li class="nav-item">
 				<router-link
 					aria-current="page"
 					class="nav-link"
 					to="/"
 					>Главная
 				</router-link>
-			</li>
+			</li> -->
 			<!-- <li class="nav-item">
 				<router-link
 					class="nav-link"
@@ -35,7 +35,7 @@
 	.header {
 		width: 992px;
 		margin: 0 auto;
-		height: 100px;
+		/* height: 100px; */
 		display: flex;
 		align-items: center;
 		justify-content: center;

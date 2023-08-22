@@ -23,8 +23,8 @@ class BlogFactory extends Factory
             'views' => 10000,
             'likes' => 1000,
             'dislikes' => 9999,
-            'title' => $this->faker->text(),
-            'text' => $this->faker->randomLetter()
+            'title' => $this->faker->jobTitle(),
+            'text' => $this->faker->text()
         ];
     }
 }

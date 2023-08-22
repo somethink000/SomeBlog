@@ -1,6 +1,9 @@
 <template>
     <div class="blog_article">
-        <h1>{{ title }}</h1>
+            <p class="title">{{ title }}</p>
+        <div>
+           
+        </div>
     </div>
 </template>
 
@@ -23,8 +26,14 @@ export default defineComponent({
 
 <style>
 .blog_article{
-    margin-top: 100px;
-    border: 1px white;
+    margin-top: 2%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    border-bottom: 1px solid rgb(255, 255, 255);   
 }
 
 </style>
