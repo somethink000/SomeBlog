@@ -27,14 +27,15 @@ class BlogController extends Controller
         return $this->blogService->create($request);
     }
 
-    public function show(Blog $blog)
+    public function show(Blog $blog): Blog
     {
         return $blog;
     }
 
     public function update(BlogUpdateRequest $request, Blog $blog): Blog
     {
-        return $this->blogService->update($request, $blog);
+        $this->blogService->update($request, $blog);
+        return $blog;
     }
 
     public function destroy(Blog $blog)

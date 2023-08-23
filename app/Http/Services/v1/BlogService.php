@@ -18,14 +18,13 @@ class BlogService
 
     public function create(BlogStoreRequest $request): Blog
     {
-
-        return Blog::create($request);
+        return Blog::create($request->all());
     }
 
-    public function update(BlogUpdateRequest $request, $blog): Blog
+    public function update(BlogUpdateRequest $request, Blog $blog): Blog
     {
-
-        return $blog->update($request);
+        $blog->update($request->all());
+        return $blog;
     }
 
     public function destroy(Blog $notebook): ?bool

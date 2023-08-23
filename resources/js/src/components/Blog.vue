@@ -2,7 +2,12 @@
     <div class="blog_article">
             <p class="title">{{ title }}</p>
         <div>
-           
+            <a href="{{url}}">Link</a> 
+            <!-- <router-link
+					class="nav-link"
+					to="{{url}}"
+					>Blog
+				</router-link> -->
         </div>
     </div>
 </template>
@@ -15,6 +20,10 @@ export default defineComponent({
         return {};
     },
     props: {
+        url: {
+            type: String,
+            default: ""
+        },
         title: {
             type: String,
             default: "NULL"
@@ -30,7 +39,7 @@ export default defineComponent({
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
     border-bottom: 1px solid rgb(255, 255, 255);   

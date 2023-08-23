@@ -18,7 +18,9 @@
     <h1>Blogs:</h1>
         <spin v-if="loading"></spin>
         <div v-else>
-            <Blog v-for="blog in blogs" :title="blog.title" />
+            <Blog v-for="blog in blogs" 
+            :url="blog.id"
+            :title="blog.title" />
         </div>
     </div>
 </template>
@@ -42,7 +44,7 @@ export default defineComponent({
     },
     methods: {
         loadPosts() {
-            axios.get('api/v1/blog')
+            axios.get('/api/v1/blog')
                 .then(res => {
                     console.log(res.data);
                     this.blogs = res.data;
