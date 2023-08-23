@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MyLink extends Model
+class Link extends Model
 {
     use HasFactory;
 
@@ -16,4 +16,11 @@ class MyLink extends Model
         'steam.svg',
         'youtube.svg',
     ];
+
+    protected $fillable = [
+        'image',
+        'link'
+    ];
+
+
 }

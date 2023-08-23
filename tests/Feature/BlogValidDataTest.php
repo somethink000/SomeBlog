@@ -13,18 +13,11 @@ class BlogValidDataTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function setUp(): void
-    {
-        parent::setUp();
-        Storage::fake();
-    }
-
-
     public function testBlogIndex(): void
     {
-        $notebook = Blog::factory()->count(50)->create();
+        Blog::factory()->count(50)->create();
         $response = $this->get(route('blog.index'));
-        
+
         $response->assertStatus(200);
     }
 
@@ -32,7 +25,7 @@ class BlogValidDataTest extends TestCase
     {
         $blog = Blog::factory()->create();
         $response = $this->get(route('blog.show', $blog));
-        
+
         $response->assertStatus(200);
     }
 
@@ -48,5 +41,13 @@ class BlogValidDataTest extends TestCase
     {
         $blog = Blog::factory()->create();
         $response = $this->patch(route('blog.update', $blog->getKey()), $blog->getAttributes())->assertOk();
+    }
+
+    public function testBlogDelete(): void
+    {
+        $blog = Blog::factory()->create();
+
+        $response = $this->delete(route('blog.destroy', $blog->getKey()));
+        $response->assertOk();
     }
 }

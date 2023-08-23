@@ -27,8 +27,8 @@ class BlogService
         return $blog;
     }
 
-    public function destroy(Blog $notebook): ?bool
+    public function destroy(Blog $blog): ?bool
     {
-        return $notebook->delete();
+        return $blog->delete();
     }
 }

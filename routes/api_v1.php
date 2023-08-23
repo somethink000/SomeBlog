@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\v1\BlogController;
+use App\Http\Controllers\Api\v1\LinkContoller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,5 @@ Route::resource('blog', BlogController::class);
 // ->except([
 //     'create', 'edit' 
 // ]);
+
+Route::resource('link', LinkContoller::class);

@@ -38,8 +38,8 @@ class BlogController extends Controller
         return $blog;
     }
 
-    public function destroy(Blog $blog)
+    public function destroy(Blog $blog): ?bool
     {
-        //
+        return $this->blogService->destroy($blog);
     }
 }
