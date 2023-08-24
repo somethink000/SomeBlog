@@ -1,5 +1,10 @@
 <template>
-    <h1>{{ blog.title }}</h1>
+    <h1 class="blog_title">{{ blog.title }}</h1>
+    <div class="blog_text">
+        <p>{{ blog.text }}</p>
+    </div>
+    <p>{{ blog.created_at }}</p>
+    
 </template>
 
 <script>
@@ -32,4 +37,15 @@ export default defineComponent({
 });
 </script>
 
-<style></style>
+<style>
+.blog_title{
+    margin-top: 15%;
+}
+.blog_text{
+    font-size: 20px;
+    padding: 5%;
+    border-bottom: 1px solid rgba(255,0,0,0.4);
+    border-top: 1px solid rgba(255,0,0,0.4);
+}
+
+</style>

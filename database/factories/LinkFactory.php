@@ -17,7 +17,7 @@ class LinkFactory extends Factory
     public function definition(): array
     {
         return [
-            'image' => 'github.png',
+            'image' => 'github.svg',
             'link' => 'https://github.com/somethink000'
         ];
     }

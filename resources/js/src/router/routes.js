@@ -1,6 +1,6 @@
 import Home from '@/pages/Home.vue';
-import About from '@/pages/About.vue';
-import BlogPage from '@/pages/BlogPage.vue';
+import Blog from '@/pages/Blog.vue';
+import BlogAdd from '@/pages/BlogAdd.vue';
 
 const routes = [
 	{
@@ -9,12 +9,12 @@ const routes = [
 	},
 	{
 		path: "/blog/:id",
-		component: BlogPage,
+		component: Blog,
 	},
-	// {
-	// 	path: '/about',
-	// 	component: About,
-	// },
+	{
+		path: "/blog/add",
+		component: BlogAdd,
+	},
 ];
 
 export default routes;

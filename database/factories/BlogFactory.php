@@ -24,7 +24,7 @@ class BlogFactory extends Factory
             'likes' => 1000,
             'dislikes' => 9999,
             'title' => $this->faker->jobTitle(),
-            'text' => $this->faker->text()
+            'text' => $this->faker->text($maxNbChars = 1000)
         ];
     }
 }

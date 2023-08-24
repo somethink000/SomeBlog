@@ -26,7 +26,6 @@ export default defineComponent({
 <style>
 .body {
 	margin: 0;
-	padding-bottom: 70px;
 	min-height: 110vh;
 	background: url(../images/dark.jpg);
 	background-attachment: fixed;
@@ -34,6 +33,7 @@ export default defineComponent({
 	background-repeat: repeat-y;
 	.blur{
 		backdrop-filter: blur(5px);
+		min-height: 110vh;
 	}
 }
 

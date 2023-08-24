@@ -1,10 +1,11 @@
 <template>
-    <div uk-spinner class="spin"></div>
+    <div class="spin"></div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
     export default defineComponent({
+        name: "Spin",
         components: {},
         setup() {
 			return {};
@@ -12,11 +13,12 @@ import { defineComponent } from 'vue';
     });
 </script>
 
-<style scoped>
+<style>
     .spin {
         position: absolute;
-        left: 50%;
-        top: 50%;
+        /* left: 50%;
+        top: 50%; */
+        background-color: white;
         transform: translate(-50%, -50%);
     }
 </style>

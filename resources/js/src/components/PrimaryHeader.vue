@@ -7,15 +7,7 @@
 					class="nav-link"
 					to="/"
 					>Главная
-				</router-link>
-			</li> -->
-			<!-- <li class="nav-item">
-				<router-link
-					class="nav-link"
-					to="/about"
-					>О нас
-				</router-link>
-			</li> -->
+				</router-link> -->
 		</ul>
 	</header>
 </template>
