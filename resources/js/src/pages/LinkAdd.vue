@@ -5,10 +5,12 @@
 
             <p class="title">Add post</p>
 
+            <input class="input" v-model="form.link" type="text" placeholder="Link">
 
-            <input class="input" v-model="form.title" type="text" placeholder="Title">
-
-            <textarea class="textarea" v-model="form.text" rows="8" placeholder="Text"></textarea>
+            <select class="select" v-model="form.image">
+                <option disabled>Select image</option>
+                <option v-for="img in images">{{ img }}</option>
+            </select>
 
             <button class="submit" @click.prevent="store">submit</button>
 
@@ -26,9 +28,16 @@ import axios from 'axios';
 export default defineComponent({
     components: {},
     data: () => ({
+        images: [
+        'github.svg',
+        'artstation.svg',
+        'sketchfab.svg',
+        'steam.svg',
+        'youtube.svg',
+    ],
         form: {
-            title: "",
-            text: ""
+            image: "",
+            link: ""
         },
         loading: false,
         error: false
@@ -36,14 +45,14 @@ export default defineComponent({
     methods: {
         store() {
             this.loading = true;
-            axios.post('/api/v1/blog', this.form, {
+            axios.post('/api/v1/link', this.form, {
                 headers: {
                     "Content-type": "application/json"
                 }
             })
                 .then(res => {
                     if (res.data) {
-                        this.$router.push('/blog/' + res.data.id);
+                        this.$router.push('/');
                     } else {
                         console.log(res.data);
                         setTimeout(() => {
@@ -58,15 +67,7 @@ export default defineComponent({
 </script>
 
 <style>
-.form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15%;
-    color: white;
-}
-
-.input {
+.select{
     margin-top: 2%;
     width: 70%;
     padding: 10px;
@@ -76,31 +77,5 @@ export default defineComponent({
     border-radius: 4px;
     border-bottom: 1px solid rgb(255, 255, 255);
 }
-
-.textarea {
-    margin-top: 2%;
-    width: 70%;
-    padding: 3px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: white;
-    border-radius: 4px;
-    border-bottom: 1px solid rgb(255, 255, 255);
-}
-
-.submit {
-    margin-top: 1%;
-    padding: 3px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: white;
-    font-size: 20px;
-    border-radius: 3px;
-}
-
-.submit:hover {
-    border-bottom: 1px solid rgb(255, 255, 255);
-}
-
 
 </style>

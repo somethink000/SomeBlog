@@ -4,9 +4,14 @@
         <div class="l_side">
             <div class="circle-image"><img src="/images/me.jpg" width="368" alt="" /> </div>
             <p class="title">Some</p>
+            
             <div class="links">
-                <div class="circle-image" v-for="link in links"><a :href="link.link"><img :src="'/images/' + link.image"
-                            width="46" alt=""></a></div>
+                <div class="circle-image" v-for="link in links">
+                    <a :href="link.link"><img :src="'/images/' + link.image" width="58" alt=""></a>
+                    <a href="" class="circle-image" @click.prevent="deleteLink(link.id)"><img :src="'/images/delete.svg'" width="24" alt=""></a>
+                </div>
+
+                <a class="circle-image" href="/link/add"><img :src="'/images/plus.svg'" width="32" alt=""></a>
             </div>
         </div>
 
@@ -31,8 +36,8 @@
             </a>
         </h1>
 
-        <spin v-if="loading"></spin>
-        <div v-else>
+        <Spin v-if="loading"></Spin>
+        <div class="blog-articles" v-else>
             <div class="blog_article" v-for="blog in blogs">
                 <p class="title">{{ blog.title }}</p>
                 <div>
@@ -76,6 +81,16 @@ export default defineComponent({
                     console.log(res.data);
                     this.links = res.data;
                 })
+        },
+        deleteLink(id) {
+            axios.delete('/api/v1/link/' + id)
+                .then(res => {
+                    if (res.data) {
+                        this.$router.push('/');
+                    } else {
+                        console.log(res.data);
+                    }
+                })
         }
     }
 });
@@ -83,6 +98,11 @@ export default defineComponent({
 
 
 <style>
+.blog-articles{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .blog_article {
     margin-top: 2%;
     padding-left: 30px;
@@ -103,6 +123,7 @@ export default defineComponent({
 
 .links {
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
@@ -122,8 +143,7 @@ export default defineComponent({
 
 .circle-image {
     flex: auto;
-    padding: 10px;
-
+    padding: 5px;
 
 }
 
@@ -150,4 +170,7 @@ img {
 
 .blog_box {
     margin-top: 5%;
-}</style>
+ 
+    
+}
+</style>

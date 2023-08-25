@@ -28,11 +28,11 @@ export default defineComponent({
 	margin: 0;
 	min-height: 110vh;
 	background: url(../images/dark.jpg);
-	background-attachment: fixed;
-	background-size: 100%;
+	/* background-attachment: fixed; */
+	background-size: 100%; 
 	background-repeat: repeat-y;
 	.blur{
-		backdrop-filter: blur(5px);
+		backdrop-filter: blur(3px);
 		min-height: 110vh;
 	}
 }

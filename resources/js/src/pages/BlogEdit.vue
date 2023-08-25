@@ -1,16 +1,15 @@
 <template>
     <div>
-
         <form class="form">
 
-            <p class="title">Add post</p>
+            <p class="title">Edit post</p>
 
 
             <input class="input" v-model="form.title" type="text" placeholder="Title">
 
-            <textarea class="textarea" v-model="form.text" rows="8" placeholder="Text"></textarea>
+            <textarea class="textarea" v-model="form.text" rows="8" placeholder="Text" >{{ blog.text }}</textarea>
 
-            <button class="submit" @click.prevent="store">submit</button>
+            <button class="submit" @click.prevent="update">submit</button> 
 
             <div class="" v-if="error">
                 <p>Проверьте правильность введенных полей</p>
@@ -21,22 +20,38 @@
 
 <script>
 import { defineComponent } from 'vue';
+import Spin from "../components/Spin.vue";
 import axios from 'axios';
 
 export default defineComponent({
-    components: {},
+    components: {
+        Spin
+    },
     data: () => ({
         form: {
             title: "",
             text: ""
         },
-        loading: false,
+        loading: true,
+        blog: [],
         error: false
     }),
+    mounted() {
+        this.loadPost(this.$route.params.id);
+    },
     methods: {
-        store() {
+        loadPost(id) {
+            axios.get('/api/v1/blog/' + id)
+                .then(res => {
+                    this.blog = res.data;
+                    setTimeout(() => {
+                        this.loading = false;
+                    }, 500);
+                })
+        },
+        update() {
             this.loading = true;
-            axios.post('/api/v1/blog', this.form, {
+            axios.patch('/api/v1/blog/' + this.blog.id, this.form, {
                 headers: {
                     "Content-type": "application/json"
                 }
@@ -57,50 +72,4 @@ export default defineComponent({
 });
 </script>
 
-<style>
-.form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 15%;
-    color: white;
-}
-
-.input {
-    margin-top: 2%;
-    width: 70%;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: white;
-    border-radius: 4px;
-    border-bottom: 1px solid rgb(255, 255, 255);
-}
-
-.textarea {
-    margin-top: 2%;
-    width: 70%;
-    padding: 3px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: white;
-    border-radius: 4px;
-    border-bottom: 1px solid rgb(255, 255, 255);
-}
-
-.submit {
-    margin-top: 1%;
-    padding: 3px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    color: white;
-    font-size: 20px;
-    border-radius: 3px;
-}
-
-.submit:hover {
-    border-bottom: 1px solid rgb(255, 255, 255);
-}
-
-
-</style>
+<style></style>

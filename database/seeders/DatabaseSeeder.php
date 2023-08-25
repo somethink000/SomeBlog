@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         ->create();
 
         Link::factory()
-        ->count(5)
+        ->count(3)
         ->create();
     }
 }
