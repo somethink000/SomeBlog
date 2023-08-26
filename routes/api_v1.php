@@ -18,14 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::resource('blog', BlogController::class);
-// ->except([
-//     'create', 'edit' 
-// ]);
+Route::resource('blog', BlogController::class)
+ ->except([
+     'create', 'edit' 
+ ]);
 
-Route::resource('link', LinkContoller::class);
-
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::resource('link', LinkContoller::class)
+->except([
+    'create', 'edit','show','update', 
+]);
