@@ -2,13 +2,18 @@
     <div class="member">
 
         <div class="l_side">
-            <div class="circle-image"><img src="/images/me.jpg" width="368" alt="" /> </div>
-            <p class="title">Some</p>
             
+            <div class="circle-image"><img :src="'/storage/' + member.image" width="368" alt="" /> </div>
+            <p class="title">
+                {{ member.name }} 
+                <a class="circle-image" :href="'/member_edit/' + member.id"><img :src="'/images/edit.svg'" width="32" alt=""></a>
+            </p>
+
             <div class="links">
                 <div class="circle-image" v-for="link in links">
                     <a :href="link.link"><img :src="'/images/' + link.image" width="58" alt=""></a>
-                    <a href="" class="circle-image" @click.prevent="deleteLink(link.id)"><img :src="'/images/delete.svg'" width="24" alt=""></a>
+                    <a href="" class="circle-image" @click.prevent="deleteLink(link.id)"><img :src="'/images/delete.svg'"
+                            width="24" alt=""></a>
                 </div>
 
                 <a class="circle-image" href="/link/add"><img :src="'/images/plus.svg'" width="32" alt=""></a>
@@ -16,12 +21,7 @@
         </div>
 
         <div class="r_side">
-            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum."</p>
+            <p>{{ member.about }}</p>
         </div>
 
     </div>
@@ -61,10 +61,12 @@ export default defineComponent({
     data: () => ({
         loading: true,
         blogs: [],
+        member: [],
         links: []
     }),
     mounted() {
         this.loadPosts();
+        this.loadMember();
     },
     methods: {
         loadPosts() {
@@ -80,6 +82,13 @@ export default defineComponent({
                 .then(res => {
                     console.log(res.data);
                     this.links = res.data;
+                })
+        },
+        loadMember() {
+            axios.get('/api/v1/member/' + 1)
+                .then(res => {
+                    this.member = res.data;
+                    console.log(this.member.image);
                 })
         },
         deleteLink(id) {
@@ -98,7 +107,7 @@ export default defineComponent({
 
 
 <style>
-.blog-articles{
+.blog-articles {
     display: flex;
     flex-direction: column-reverse;
 }
@@ -116,7 +125,7 @@ export default defineComponent({
     border-bottom: 1px solid rgb(255, 255, 255);
 }
 
-.blg{
+.blg {
     align-items: center;
     display: flex;
 }
@@ -170,7 +179,7 @@ img {
 
 .blog_box {
     margin-top: 5%;
- 
-    
+
+
 }
 </style>

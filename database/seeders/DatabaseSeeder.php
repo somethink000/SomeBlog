@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Blog;
 use App\Models\Link;
+use App\Models\Memeber;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
@@ -28,6 +29,12 @@ class DatabaseSeeder extends Seeder
         ->count(3)
         ->create();
 
+        Memeber::create([
+            'name' => 'Name',
+            'about' => 'About',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
 
         $Admin = User::create([
             'email' => 'admin@gmail.com',

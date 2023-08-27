@@ -3,6 +3,7 @@ import Blog from '@/pages/Blog.vue';
 import BlogAdd from '@/pages/BlogAdd.vue';
 import BlogEdit from '@/pages/BlogEdit.vue';
 import LinkAdd from '@/pages/LinkAdd.vue';
+import MemberEdit from '@/pages/MemberEdit.vue';
 import Login from '@/pages/Login.vue';
 
 const routes = [
@@ -25,6 +26,10 @@ const routes = [
 	{
 		path: "/link/add",
 		component: LinkAdd,
+	},
+	{
+		path: "/member_edit/:id",
+		component: MemberEdit,
 	},
 	{
 		path: "/login",

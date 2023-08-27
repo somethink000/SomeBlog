@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Api\v1\BlogController;
 use App\Http\Controllers\Api\v1\LinkContoller;
+use App\Http\Controllers\Api\v1\MemeberController;
+use App\Models\Memeber;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,4 +28,9 @@ Route::resource('blog', BlogController::class)
 Route::resource('link', LinkContoller::class)
 ->except([
     'create', 'edit','show','update', 
+]);
+
+Route::resource('member', MemeberController::class)
+->except([
+    'store', 'create', 'edit','destroy',
 ]);
